@@ -38,11 +38,13 @@ namespace ActorsFilmListUsingADOnet
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand($"SELECT film.title " +
-                    $"FROM actor " +
-                    $"INNER JOIN film_actor on film_actor.actor_id=actor.actor_id " +
-                    $"INNER JOIN film on film.film_id=film_actor.film_id " +
-                    $"WHERE first_name='{firstName}' and last_name='{lastName}'", connection);
+                SqlCommand command = new SqlCommand("SELECT film.title " +
+                    "FROM actor " +
+                    "INNER JOIN film_actor on film_actor.actor_id=actor.actor_id " +
+                    "INNER JOIN film on film.film_id=film_actor.film_id " +
+                    "WHERE first_name = @firstName and last_name = @lastName", connection);
+                command.Parameters.AddWithValue("@firstName", firstName);
+                command.Parameters.AddWithValue("@lastName", lastName);
                 var receiver = command.ExecuteReader();
                 while (receiver.Read()) Console.WriteLine(receiver[0]);
             }
