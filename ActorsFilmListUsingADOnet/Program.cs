@@ -6,7 +6,7 @@ namespace ActorsFilmListUsingADOnet
     {
         static void Main(string[] args)
         {
-            var con =new ConnectionHandler();
+            var con = new ConnectionHandler();
         }
     }
 }

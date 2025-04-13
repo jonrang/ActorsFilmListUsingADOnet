@@ -12,7 +12,7 @@ namespace ActorsFilmListUsingADOnet
 {
     internal class ConnectionHandler
     {
-         public string? ConnectionString { get; }
+        public string? ConnectionString { get; }
         public ConnectionHandler()
         {
             var configuration = new ConfigurationBuilder()
