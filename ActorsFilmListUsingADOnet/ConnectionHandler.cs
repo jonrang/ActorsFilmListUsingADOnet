@@ -58,7 +58,7 @@ namespace ActorsFilmListUsingADOnet
                     {
                         while (receiver.Read())
                         {
-                            sb.AppendLine($"{receiver["title"]}")
+                            sb.AppendLine($"{receiver["title"]}");
                         }
                     }
                 }
