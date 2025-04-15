@@ -22,8 +22,9 @@ namespace ActorsFilmListUsingADOnet
             ConnectionString = configuration.GetConnectionString("Sakila");
             Menu menu = new Menu(this);
         }
-        public void ListActors()
+        public string ListActors()
         {
+            var sb = new StringBuilder();
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 connection.Open();
@@ -33,13 +34,15 @@ namespace ActorsFilmListUsingADOnet
                 {
                     while (receiver.Read())
                     {
-                        Console.WriteLine($"{receiver["first_name"]} {receiver["last_name"]}");
+                        sb.AppendLine($"{receiver["first_name"]} {receiver["last_name"]}");
                     }
                 }
             }
+            return sb.ToString();
         }
-        public void ListMovies(string firstName, string lastName)
+        public string ListMovies(string firstName, string lastName)
         {
+            var sb = new StringBuilder();
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 connection.Open();
@@ -55,11 +58,12 @@ namespace ActorsFilmListUsingADOnet
                     {
                         while (receiver.Read())
                         {
-                            Console.WriteLine(receiver["title"]);
+                            sb.AppendLine($"{receiver["title"]}")
                         }
                     }
                 }
             }
+            return sb.ToString();
         }
     }
 }

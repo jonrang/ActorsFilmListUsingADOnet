@@ -44,7 +44,7 @@ namespace ActorsFilmListUsingADOnet
             switch (choice)
             {
                 case 1:
-                    MyConnection.ListActors();
+                    Console.WriteLine(MyConnection.ListActors());
                     return true;
                 case 2:
                     ChooseActor();
@@ -61,9 +61,9 @@ namespace ActorsFilmListUsingADOnet
             Console.WriteLine("Write name of actor:");
             try
             {
-                var fullName = Console.ReadLine();
-                string[] firstName = fullName.Split(' ');
-                MyConnection.ListMovies(firstName[0], firstName[1]);
+                string? fullName = Console.ReadLine();
+                string[] splitName = fullName.Split(' ');
+                Console.WriteLine(MyConnection.ListMovies(splitName[0], splitName[1]));
             }
             catch (Exception)
             {
